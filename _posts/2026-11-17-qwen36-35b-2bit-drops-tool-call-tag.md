@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On a 24 GB Mac, ~2-bit Qwen3.6-35B drops its tool-call tag"
-date: 2026-11-17 10:00:00 +0800
+date: 2026-11-17 09:10:00 +0800
 ---
 
 *Measured with [solvetime](https://github.com/audenvenn/solvetime), an open benchmark that scores local LLM setups by coding-agent tasks solved and time to solution, not tokens per second.*
