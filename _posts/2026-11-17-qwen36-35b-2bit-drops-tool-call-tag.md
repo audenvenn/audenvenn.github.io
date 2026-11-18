@@ -42,7 +42,7 @@ raceline keeps the model at 4 bits on 24 GB by keeping some of its experts on th
 
 The likely reason: each tool output adds a few hundred new tokens, and those route to most of the model's 256 experts, so the 29% of experts raceline keeps on the SSD are read again for every such chunk. Its prompt reading during the runs was 420 tok/s (306 with a smaller expert cache) against kapitsa's 925. The synthetic prompt spread that cost over 4,000 tokens. Measure the workload you will actually run.
 
-*Update, 17 November: a defect in solvetime, since fixed, held about 3.5 GB of memory during every run. raceline reads the experts it doesn't cache through macOS's file cache, which that memory squeezed, so the 1.45x gap may be smaller than measured; it wasn't remeasured. Details are on the [results page](https://github.com/audenvenn/solvetime/blob/main/published/2026-11-qwen3.6-35b-a3b-m6-24gb/README.md).*
+*Update, 17 November: a defect in solvetime, since fixed, held about 3.5 GB of memory during every run. raceline reads the experts it doesn't cache through macOS's file cache, which that memory squeezed, so the 1.45x gap may be smaller than measured; it wasn't remeasured. A second finding pulls the other way: agents' whole-disk `find /` scans, also removed since, cost both engines about the same time, and without them the gap is 1.58x. Details are on the [results page](https://github.com/audenvenn/solvetime/blob/main/published/2026-11-qwen3.6-35b-a3b-m6-24gb/README.md).*
 
 ## How it was measured
 
